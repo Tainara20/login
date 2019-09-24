@@ -8,7 +8,7 @@ layout Bootstrap para os formulários
 - ~Formulário de Cadastro de novos usuários~
 
 
-# aula 01 - 23/09/2019
+# aula 01 - 23/09/2019 :godmode:
 Começou a Primavera 
 Aula inicial, configuração do projeto no Github.
 E criação do passo a passo.
