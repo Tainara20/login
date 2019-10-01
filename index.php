@@ -113,6 +113,7 @@
                 <div class="form-group">
                     <p class="text-center">
                         Já registrado? <a href="#" id="btnJaRegistrado">
+                        Entrar por aqui.
                         </a>
                     </p>
 
@@ -196,27 +197,26 @@
         //Código jQuery para mostrar e ocultar os formulários
 
         $(function() {
+            $("#btnEsqueci").click(function() {
+                $("#caixaLogin").hide(); //ocultar
+                $("#caixaSenha").show(); //Mostrar
+            });
 
-                    $("#btnEsqueci").click(function() {
-                        $("#caixaLogin").hide(); //ocultar login
-                        $("#caixaSenha").show(); //Mostrar nova senha
-                    });
+            $("#btnRegistrarNovo").click(function() {
+                $("#caixaLogin").hide(); //ocultar
+                $("#caixaRegistro").show(); //Mostrar
+            });
 
-                    $("#btnJaRegistrado").click(function() {
-                        $("#caixaSenha").hide(); //ocultar gerar nova senha
-                        $("#caixaLogin").show(); //Mostrar caixa login
-                    });
+            $("#btnJaRegistrado").click(function() {
+                $("#caixaSenha").hide(); //ocultar
+                $("#caixaLogin").show(); //Mostrar
+            });
 
-                    $("#btnRegistrarNovo").click(function() {
-                        $("#caixaLogin").hide(); //ocultar
-                        $("#caixaRegistro").show(); //Mostrar
-
-                    });
-                    $("#btnRegistrado2").click(function() {
-                        $("#caixaLogin").hide(); //ocultar
-                        $("#caixaRegistro").show(); //Mostrar
-
-                    });
+            $("#btnJaRegistrado2").click(function() {
+                $("#caixaRegistro").hide(); //ocultar
+                $("#caixaLogin").show(); //Mostrar
+            });
+        });
     </script>
 </body>
 
