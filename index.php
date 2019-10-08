@@ -1,9 +1,3 @@
-<!doctype html>
-<html lang="pt-br">
-<!-- Para acessar o projeto, habilite o Apache no XAMPP
-    Abra o URL  http://localhost/login/
--->
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,8 +13,8 @@
         #alerta,
         #caixaSenha,
         #caixaRegistro {
-
             display: none;
+
         }
     </style>
 
@@ -33,7 +27,7 @@
             <div class="col-lg-4 offset-lg-4" id="alerta">
                 <div class="alert alert-success text-center">
                     <strong class="resultado">
-                        Alo Ha Thurmaaaaaaaa
+                        Alo Ha Tchurmaaaaaaaa
                     </strong>
 
                 </div>
@@ -81,9 +75,6 @@
                             </a>
                         </p>
                     </div>
-
-
-
                 </form>
 
             </div>
@@ -145,23 +136,19 @@
                     </div>
 
                     <div class="form-group">
-
                         <input type="password" name="senhaDoUsuario" id="senhaDoUsuario" class="form-control" placeholder="Senha Usuário" placeholder="Senha" required minlength="6">
                     </div>
 
                     <div class="form-group">
-
                         <input type="password" name="senhaUsuarioConfirmar" id="senhaUsuarioConfirmar" class="form-control" placeholder="confirmar Senha" required minlength="6">
                     </div>
 
                     <div class="form-group mt-3">
-
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" name="concordas" id="concordar" class="custom-control-input">
                             <label for="concordar" class="custom-control-label">
                                 Eu concordo com <a href="#"> os termos de condições </a>
                             </label>
-
                             <div class="form-group">
                                 <input type="submit" value="::Registrar::" name="btnRegistrar" id="btnRegistrar" class="btn btn-primary btn-block">
                             </div>
@@ -172,22 +159,11 @@
                                     </a>
                                 </p>
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </form>
-
-
-
-
             </div>
-
-        </section>
-
-        <!-- Final do formulário de cadastro de novos usuários -->
+        </section> <!-- Final do formulário de cadastro de novos usuários -->
 
     </main>
     <!-- Optional JavaScript -->
@@ -201,74 +177,126 @@
         //Código jQuery para mostrar e ocultar os formulários
         $(function() {
 
-            // Validação de formulários
-            jQuery.validator.setDefaults({
+                    // Validação de formulários
 
-                success: "valid"
-            });
+                    jQuery.validator.setDefaults({
+                        success: "valid"
+                    });
 
-            $("#formRegistro").validate({
-                rules: {
-                    senhaDoUsuario: "required",
-                    senhaUsuarioConfirmar: {
-                        equalTo: "#senhaDoUsuario"
-                    }
-                }
-            });
+                    $("#formRegistro").validate({
+                        rules: {
+                            senhaDoUsuario: "required",
+                            senhaUsuarioConfirmar: {
+                                equalTo: "#senhaDoUsuario"
+                            }
+                        }
+                    });
+                    $("#FormLogin").validate();
+                    $("#FormSenha").validate();
+                    // Mostrar e ocultar formulários
+                    $("#btnEsqueci").click(function() {
+                        $("#caixaLogin").hide(); //ocultar
+                        $("#caixaSenha").show(); //Mostrar
+                    });
 
-            $("#FormLogin").validate();
+                    $("#btnRegistrarNovo").click(function() {
+                        $("#caixaLogin").hide(); //ocultar
+                        $("#caixaRegistro").show(); //Mostrar
+                    });
 
-            $("#FormSenha").validate();
+                    $("#btnJaRegistrado").click(function() {
+                        $("#caixaSenha").hide(); //ocultar
+                        $("#caixaLogin").show(); //Mostrar
+                    });
 
+                    $("#btnJaRegistrado2").click(function() {
+                        $("#caixaRegistro").hide(); //ocultar
+                        $("#caixaLogin").show(); //Mostrar
+                    });
 
-            // Mostrar e ocultar formulários
+                    //Cadastro de novo usuário
+                    $("#btnRegistrar").click(function(e) {
+                        if (document
+                            .querySelector("#formRegistro")
+                            .checkValidity()) {
+                            e.preventDefault(); //Não abrir outra página!
+                            //Envio de dados via Ajax
+                            $.ajax({
+                                url: 'recebe_dados.php',
+                                method: 'post',
+                                data: $("#formRegistro").serialize() + '&action=cadastro',
+                                success: function(resposta) {
+                                    $("#alerta").show();
+                                    $(".resultado").html(resposta);
+                                }
+                            });
+                        }
+                        return true;
+                    });
+                    //Login
+                    $("#btnEntrar").click(function(e) {
+                        if (document
+                            .querySelector("#formEntrar")
+                            .checkValidity()) {
+                            e.preventDefault(); //Não abrir outra página!
+                            //Envio de dados via Ajax
+                            $.ajax({
+                                url: 'recebe_dados.php',
+                                method: 'post',
+                                data: $("#formEntrar").serialize() + '&action=entrar',
+                                success: function(resposta) {
+                                    $("#alerta").show();
+                                    $(".resultado").html(resposta);
+                                }
+                            });
+                        }
+                        return true;
+                    });
+                    //Recuperação de senha
+                    $("#btnGerar").click(function(e) {});
+                        if (document
+                            .querySelector("#formSenha")
+                            .checkValidity()) {
+                            e.preventDefault(); //Não abrir outra página!
+                            //Envio de dados via Ajax
+                            $.ajax({
+                                url: 'recebe_dados.php',
+                                method: 'post',
+                                data: $("#formSenha").serialize() + '&action=senha',
+                                success: function(resposta) {
+                                    $("#alerta").show();
+                                    $(".resultado").html(resposta);
+                                }
+                            });
+                        }
+                        return true;
 
-            $("#btnEsqueci").click(function() {
-                $("#caixaLogin").hide(); //ocultar
-                $("#caixaSenha").show(); //Mostrar
-            });
+                    });
 
-            $("#btnRegistrarNovo").click(function() {
-                $("#caixaLogin").hide(); //ocultar
-                $("#caixaRegistro").show(); //Mostrar
-            });
-
-            $("#btnJaRegistrado").click(function() {
-                $("#caixaSenha").hide(); //ocultar
-                $("#caixaLogin").show(); //Mostrar
-            });
-
-            $("#btnJaRegistrado2").click(function() {
-                $("#caixaRegistro").hide(); //ocultar
-                $("#caixaLogin").show(); //Mostrar
-            });
-        });
-
-        /*
-         * Translated default messages for the jQuery validation plugin.
-         * Locale: PT_BR
-         */
-        jQuery.extend(jQuery.validator.messages, {
-            required: "Este campo &eacute; requerido.",
-            remote: "Por favor, corrija este campo.",
-            email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
-            url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
-            date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
-            dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
-            number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
-            digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
-            creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
-            equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
-            accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
-            maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
-            minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
-            rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
-            range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
-            max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
-            min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
-        });
+                    /*
+                     * Translated default messages for the jQuery validation plugin.
+                     * Locale: PT_BR
+                     */
+                    jQuery.extend(jQuery.validator.messages, {
+                        required: "Este campo &eacute; requerido.",
+                        remote: "Por favor, corrija este campo.",
+                        email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
+                        url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
+                        date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
+                        dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
+                        number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
+                        digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
+                        creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
+                        equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
+                        accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
+                        maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
+                        minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
+                        rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
+                        range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
+                        max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
+                        min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
+                    });
     </script>
-
 </body>
 
 </html>
