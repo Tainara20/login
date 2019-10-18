@@ -2,6 +2,7 @@
 Sistema de Login em PHP e Javascript
 
 # aula 07 - 18/10/2019 
+- Inicío da autenticação e entrada no sistema
 
 # aula 06 - 15/10/2019 
 Persistência de dados no banco de dados.
