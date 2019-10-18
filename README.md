@@ -1,6 +1,8 @@
 # login
 Sistema de Login em PHP e Javascript
 
+# aula 07 - 18/10/2019 
+
 # aula 06 - 15/10/2019 
 Persistência de dados no banco de dados.
 
@@ -60,7 +62,7 @@ Pressione Enter
  - Verifique se apareceu a porta 80 Apache e 3306 MySQL
  - Verifique se ficou verde o Apache e MySQL
  
- ## Testae se está funcionando 
+ ## Teste se está funcionando 
  - Abra o navegador Firefox Azul e digite http://localhost/login
  
  ## Editar utilizando o VS Code 
