@@ -2,6 +2,8 @@
 Sistema de Login em PHP e Javascript
 
 # aula 08 - 21/10/2019 
+- Autenticação do usuário e permissão de que acesse ao perfil.php
+- Conceito de sessão
 
 # aula 07 - 18/10/2019 
 - Inicío da autenticação e entrada no sistema
