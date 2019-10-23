@@ -16,6 +16,8 @@ $nomeCompleto = $linha ['nomeCompleto'];
 $emailDoUsuario = $linha ['emailDoUsuario'];
 $dataCriado = $linha ['dataCriado'];
 
+//conversão de data
+    $dataCriado = date('d/m/Y', strtotime($dataCriado));
 
 }else{
     //se não tiver logado, redirecionar  para index
