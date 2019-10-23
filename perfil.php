@@ -32,7 +32,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Perfil
+                        <?= $NomeDoUsuario ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Ação</a>
@@ -48,13 +48,16 @@
         <div class="container">
             <h1 class="display-4">Bem-vind@</h1>
             <h2 class="display-2 text-center bg-info rounded p-1">
-            Nome completo
+            <?= $nomeCompleto ?>
             </h2>
             <h2 class="text-center">
-            E-mail do Usuário: taay7106@gmail.com
+            E-mail do Usuário:
+            <a href="mailto:<?=$emailDoUsuario?>">
+            <?=$emailDoUsuario?>
+            </a>
             </h2>
             <h2 class="text-center">
-            Registrado em: 18/10/2019
+            Registrado em: <?=$dataCriado?>
             
             </h2>
         </div>
